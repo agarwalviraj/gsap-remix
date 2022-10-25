@@ -1,9 +1,34 @@
 import loadable from "@loadable/component";
-var document = {};
+var window: any = window || this,
+  navigator = window.navigator || { userAgent: "" },
+  dummyElement = {
+    style: {},
+    getElementsByTagName: function () {
+      return [];
+    },
+  },
+  document: any = document || {
+    createElement: function () {
+      return dummyElement;
+    },
+  };
 import { gsap } from "gsap";
 import { useEffect } from "react";
 export default function Index() {
   useEffect(() => {
+    window = window || this;
+    navigator = window.navigator || { userAgent: "" };
+    dummyElement = {
+      style: {},
+      getElementsByTagName: function () {
+        return [];
+      },
+    };
+    document = document || {
+      createElement: function () {
+        return dummyElement;
+      },
+    };
     if (window)
       gsap
         .timeline({ repeat: -1 })
