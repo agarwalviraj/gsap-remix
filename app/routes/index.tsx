@@ -1,5 +1,5 @@
 import loadable from "@loadable/component";
-import gsap from "gsap";
+import { gsap } from "gsap";
 import { useEffect } from "react";
 export default function Index() {
   useEffect(() => {
