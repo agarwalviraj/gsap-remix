@@ -1,23 +1,6 @@
 import loadable from "@loadable/component";
+import gsap from "gsap";
 export default function Index() {
-  const gsap = loadable(() => import("gsap"));
-
-  gsap
-    .timeline({ repeat: -1 })
-    .to(".button__loader", {
-      duration: 0.3,
-      opacity: 0.6,
-      stagger: {
-        amount: 0.6,
-      },
-    })
-    .to(".button__loader", {
-      duration: 0.3,
-      opacity: 1,
-      stagger: {
-        amount: 0.6,
-      },
-    });
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Welcome to Remix</h1>
