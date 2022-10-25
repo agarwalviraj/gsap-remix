@@ -1,26 +1,23 @@
-import { lazy, useEffect } from "react";
 import loadable from "@loadable/component";
 export default function Index() {
-  useEffect(() => {
-    const gsap = loadable(async () => await import("gsap"));
+  const gsap = loadable(() => import("gsap"));
 
-    gsap
-      .timeline({ repeat: -1 })
-      .to(".button__loader", {
-        duration: 0.3,
-        opacity: 0.6,
-        stagger: {
-          amount: 0.6,
-        },
-      })
-      .to(".button__loader", {
-        duration: 0.3,
-        opacity: 1,
-        stagger: {
-          amount: 0.6,
-        },
-      });
-  }, []);
+  gsap
+    .timeline({ repeat: -1 })
+    .to(".button__loader", {
+      duration: 0.3,
+      opacity: 0.6,
+      stagger: {
+        amount: 0.6,
+      },
+    })
+    .to(".button__loader", {
+      duration: 0.3,
+      opacity: 1,
+      stagger: {
+        amount: 0.6,
+      },
+    });
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Welcome to Remix</h1>
