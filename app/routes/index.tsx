@@ -1,54 +1,32 @@
 import loadable from "@loadable/component";
-var window: any = window || this,
-  navigator = window.navigator || { userAgent: "" },
-  dummyElement = {
-    style: {},
-    getElementsByTagName: function () {
-      return [];
-    },
-  },
-  document: any = document || {
-    createElement: function () {
-      return dummyElement;
-    },
-  };
 import { gsap } from "gsap";
-import { useEffect } from "react";
+import { LegacyRef, RefObject, useEffect, useRef } from "react";
 export default function Index() {
+  const testRef = useRef<any>();
   useEffect(() => {
-    window = window || this;
-    navigator = window.navigator || { userAgent: "" };
-    dummyElement = {
-      style: {},
-      getElementsByTagName: function () {
-        return [];
-      },
-    };
-    document = document || {
-      createElement: function () {
-        return dummyElement;
-      },
-    };
-    if (window)
+    if (window && testRef)
       gsap
         .timeline({ repeat: -1 })
-        .to(".button__loader", {
+        .to(testRef.current, {
           duration: 0.3,
           opacity: 0.6,
           stagger: {
             amount: 0.6,
           },
         })
-        .to(".button__loader", {
+        .to(testRef.current, {
           duration: 0.3,
           opacity: 1,
           stagger: {
             amount: 0.6,
           },
         });
-  }, []);
+  }, [testRef]);
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+    <div
+      ref={testRef}
+      style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}
+    >
       <h1>Welcome to Remix</h1>
       <ul>
         <li>
