@@ -1,24 +1,29 @@
-import gsap from "gsap";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
+import loadable from "@loadable/component";
 export default function Index() {
   useEffect(() => {
-    if (window)
-      gsap
-        .timeline({ repeat: -1 })
-        .to(".button__loader", {
-          duration: 0.3,
-          opacity: 0.6,
-          stagger: {
-            amount: 0.6,
-          },
-        })
-        .to(".button__loader", {
-          duration: 0.3,
-          opacity: 1,
-          stagger: {
-            amount: 0.6,
-          },
-        });
+    if (window) {
+      async function abc() {
+        const gsap = await loadable(async () => await import("gsap"));
+
+        gsap
+          .timeline({ repeat: -1 })
+          .to(".button__loader", {
+            duration: 0.3,
+            opacity: 0.6,
+            stagger: {
+              amount: 0.6,
+            },
+          })
+          .to(".button__loader", {
+            duration: 0.3,
+            opacity: 1,
+            stagger: {
+              amount: 0.6,
+            },
+          });
+      }
+    }
   }, []);
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
