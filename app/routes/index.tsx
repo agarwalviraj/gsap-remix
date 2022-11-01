@@ -1,11 +1,15 @@
 import loadable from "@loadable/component";
 import { LegacyRef, RefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
-
+import { useLoaderData } from "@remix-run/react";
+export const loader = () => {
+  return { gsap };
+};
 export default function Index() {
   const testRef = useRef<any>();
+  const data = useLoaderData();
   useEffect(() => {
-    if (window && testRef) gsap.timeline({ repeat: -1 });
+    if (window && testRef) data.gsap.timeline({ repeat: -1 });
     // .to(testRef.current, {
     //   duration: 0.3,
     //   opacity: 0.6,
@@ -20,7 +24,7 @@ export default function Index() {
     //     amount: 0.6,
     //   },
     // });
-  }, [testRef]);
+  }, [data]);
   return (
     <div
       ref={testRef}
