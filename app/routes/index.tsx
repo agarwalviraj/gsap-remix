@@ -1,6 +1,6 @@
 import loadable from "@loadable/component";
 import { LegacyRef, RefObject, useEffect, useRef } from "react";
-// import gsap from "gsap";
+import gsap from "gsap";
 
 export default function Index() {
   const testRef = useRef<any>();
