@@ -1,27 +1,27 @@
 import loadable from "@loadable/component";
 import { LegacyRef, RefObject, useEffect, useRef } from "react";
-import gsap from "gsap";
+// import gsap from "gsap";
 
 export default function Index() {
   const testRef = useRef<any>();
   useEffect(() => {
-    if (window && testRef)
-      gsap
-        .timeline({ repeat: -1 })
-        .to(testRef.current, {
-          duration: 0.3,
-          opacity: 0.6,
-          stagger: {
-            amount: 0.6,
-          },
-        })
-        .to(testRef.current, {
-          duration: 0.3,
-          opacity: 1,
-          stagger: {
-            amount: 0.6,
-          },
-        });
+    // if (window && testRef)
+    // gsap
+    //   .timeline({ repeat: -1 })
+    //   .to(testRef.current, {
+    //     duration: 0.3,
+    //     opacity: 0.6,
+    //     stagger: {
+    //       amount: 0.6,
+    //     },
+    //   })
+    //   .to(testRef.current, {
+    //     duration: 0.3,
+    //     opacity: 1,
+    //     stagger: {
+    //       amount: 0.6,
+    //     },
+    //   });
   }, [testRef]);
   return (
     <div
