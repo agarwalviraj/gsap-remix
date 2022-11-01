@@ -2,7 +2,7 @@ import loadable from "@loadable/component";
 import { LegacyRef, RefObject, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useLoaderData } from "@remix-run/react";
-export const loader = () => {
+export const loader = async () => {
   return { timeline: gsap.timeline({ repeat: -1 }) };
 };
 export default function Index() {
